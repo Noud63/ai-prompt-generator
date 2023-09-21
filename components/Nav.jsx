@@ -1,29 +1,26 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
-import { useState, useEffect } from 'react'
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import Link from "next/link";
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 const Nav = () => {
+  const { data: session } = useSession();
 
-const { data: session } = useSession()
+  const [providers, setProviders] = useState(null);
+  const [toggleDropdown, setToggleDropdown] = useState(false);
 
-const [ providers, setProviders ] = useState(null)
-const [ toggleDropdown, setToggleDropdown ] = useState(false)
+  const signOut = () => {};
 
-const signOut = () => {
-
-}
-
-useEffect(() => {
-   const setUpProviders = async () => {
-       const response = await getProviders()
-       setProviders(response)
-   }
-   setUpProviders()
-   /* using google and next-auth */
-},[])
+  useEffect(() => {
+    const setUpProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    };
+    setUpProviders();
+    /* using google and next-auth */
+  }, []);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -52,7 +49,7 @@ useEffect(() => {
 
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={session?.user.image}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -82,7 +79,7 @@ useEffect(() => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image}
               width={37}
               height={37}
               className="rounded-full"
@@ -108,8 +105,15 @@ useEffect(() => {
                   Create Prompt
                 </Link>
 
-                <button type="button" onClick={() => { setToggleDropdown(false); signOut()}} className="mt-5 w-full black_btn">
-                         Sign Out
+                <button
+                  type="button"
+                  onClick={() => {
+                    setToggleDropdown(false);
+                    signOut();
+                  }}
+                  className="mt-5 w-full black_btn"
+                >
+                  Sign Out
                 </button>
               </div>
             )}
@@ -132,6 +136,6 @@ useEffect(() => {
       </div>
     </nav>
   );
-}
+};
 
-export default Nav
+export default Nav;
