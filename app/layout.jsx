@@ -9,6 +9,7 @@ export const metadata = {
 }
 
 const RootLayout = ({children}) => {
+   console.log(children)
   return (
     <html lang="en">
       <body>
