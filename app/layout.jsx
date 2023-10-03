@@ -2,6 +2,7 @@ import '@styles/global.css'
 
 import Nav from '@components/Nav'
 import Provider from '@components/Provider'
+import Providers from './providers'
 
 export const metadata = {
     title: "Nextjs Course",
@@ -9,20 +10,21 @@ export const metadata = {
 }
 
 const RootLayout = ({children}) => {
-   console.log(children)
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
-        <Provider>
-          <div className="main">
-            <div className="gradient" />
-          </div>
+        <Providers>
+          <Provider>
+            <div className="main">
+              <div className="gradient" />
+            </div>
 
-          <main className="app">
-            <Nav />
-            {children}
-          </main>
-        </Provider>
+            <main className="app">
+              <Nav />
+              {children}
+            </main>
+          </Provider>
+        </Providers>
       </body>
     </html>
   );

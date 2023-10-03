@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import ToggleTheme from "./ToggleTheme";
 
 const Nav = () => {
   const { data: session } = useSession();
@@ -27,7 +28,7 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between w-full mb-16 pt-3">
+    <nav className="flex-between w-full mt-4">
       <Link href="/" className="flex gap-2 flex-center" onClick={goBack}>
         <Image
           src="/assets/images/logo.svg"
@@ -36,14 +37,19 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text dark:text-gray-200">Promptopia</p>
       </Link>
+
+      <ToggleTheme />
 
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
+            <Link
+              href="/create-prompt"
+              className="black_btn"
+            >
               Create new post
             </Link>
 

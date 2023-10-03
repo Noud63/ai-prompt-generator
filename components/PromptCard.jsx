@@ -26,7 +26,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-    <div className="prompt_card shadow-lg">
+    <div className="prompt_card shadow-lg dark:bg-transparent dark:border dark:border-orange-700 dark:shadow-[0px_0px_12px_rgba(255,98,0,0.5)]">
       <div className="flex justify-between items-start gap-5">
         <div
           className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
@@ -41,7 +41,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           />
 
           <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900">
+            <h3 className="font-satoshi font-semibold text-gray-900 dark:text-gray-200">
               {post.creator.username}
             </h3>
             <p className="font-inter text-sm text-gray-500">
@@ -64,9 +64,11 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
         </div>
       </div>
 
-      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+      <p className="my-4 font-satoshi text-sm text-gray-700 dark:text-gray-400">
+        {post.prompt}
+      </p>
       <p
-        className="font-inter text-sm blue_gradient cursor-pointer"
+        className="font-inter text-sm blue_gradient cursor-pointer dark:text-orange-600"
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         #{post.tag}
