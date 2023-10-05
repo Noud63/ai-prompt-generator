@@ -2,7 +2,6 @@
 
 import {useState, useEffect} from 'react'
 import PromptCard from './PromptCard'
-// import Image from 'next/image'
 
 const PromptCardList = ({data, handleTagClick}) => {
    return (

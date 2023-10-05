@@ -11,17 +11,15 @@ const UserProfile = ({params}) => {
     
     const [ posts, setPosts ] = useState([])
 
-    console.log(params)
-
     useEffect(() => {
 
         const GetProfile = async () => {
             const response = await fetch(
               `/api/users/${params?.id}/posts`
             );
-            const data = await response.json()
-           setPosts(data)
-        }
+                 const data = await response.json();
+               setPosts(data)
+              }
 
          if (params?.id) GetProfile();
         
@@ -29,11 +27,11 @@ const UserProfile = ({params}) => {
    
   return (
     <div>
-      <Profile
-        name={username}
-        desc="Welcome to your personalized page"
-        data={posts}
-      />
+        <Profile
+          name={username}
+          desc="Welcome to your personalized page"
+          data={posts}
+        />
     </div>
   );
 }

@@ -26,12 +26,9 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   };
 
   return (
-    <div className="prompt_card shadow-lg dark:bg-transparent dark:border dark:border-orange-700 dark:shadow-[0px_0px_12px_rgba(255,98,0,0.5)]">
-      <div className="flex justify-between items-start gap-5">
-        <div
-          className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
-          onClick={handleProfileClick}
-        >
+    <div className="prompt_card flex flex-col shadow-lg dark:bg-transparent dark:border dark:border-orange-700 dark:shadow-[0px_0px_12px_rgba(255,98,0,0.5)]">
+      <div className="flex justify-between w-full">
+        <div className="flex justify-start items-center gap-3">
           <Image
             src={post.creator.image}
             alt="user_image"
@@ -39,15 +36,18 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             height={40}
             className="rounded-full object-contain"
           />
+        </div>
 
-          <div className="flex flex-col">
-            <h3 className="font-satoshi font-semibold text-gray-900 dark:text-gray-200">
-              {post.creator.username}
-            </h3>
-            <p className="font-inter text-sm text-gray-500">
-              {post.creator.email}
-            </p>
-          </div>
+        <div
+          className="flex flex-col cursor-pointer"
+          onClick={handleProfileClick}
+        >
+          <h3 className="font-satoshi font-semibold dark:text-orange-500">
+            {post.creator.username}
+          </h3>
+          <p className="font-inter text-sm text-gray-500  dark:text-orange-600">
+            {post.creator.email}
+          </p>
         </div>
 
         <div className="copy_btn" onClick={handleCopy}>
@@ -58,24 +58,25 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
                 : "/assets/icons/copy.svg"
             }
             alt={copied === post.prompt ? "tick_icon" : "copy_icon"}
-            width={12}
-            height={12}
+            width={15}
+            height={15}
           />
         </div>
       </div>
 
-      <p className="my-4 font-satoshi text-sm text-gray-700 dark:text-gray-400">
+      <div className="flex h-full mt-3 items-start font-satoshi text-sm text-gray-700 dark:text-gray-400">
         {post.prompt}
-      </p>
-      <p
-        className="font-inter text-sm blue_gradient cursor-pointer dark:text-orange-600"
+      </div>
+
+      <div
+        className={`font-inter text-sm blue_gradient cursor-pointer dark:text-orange-600 ${pathName !== '/profile' && 'border-t border-orange-600 pt-3'}`}
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
-        #{post.tag}
-      </p>
+        tag: #{post.tag}
+      </div>
 
       {session?.user.id === post.creator._id && pathName === "/profile" && (
-        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+        <div className="mt-2 flex-start gap-4 border-t border-orange-600 pt-3 w-full">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
             onClick={handleEdit}
@@ -83,7 +84,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
             Edit
           </p>
           <p
-            className="font-inter text-sm orange_gradient cursor-pointer"
+            className="font-inter text-sm text-orange-600 cursor-pointer"
             onClick={handleDelete}
           >
             Delete
