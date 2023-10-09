@@ -89,7 +89,7 @@
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
+  @apply mt-8 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
 
 .orange_gradient {
@@ -121,7 +121,7 @@
 }
 
 .prompt_layout {
-  @apply space-y-6 py-8 sm:columns-2 sm:gap-6 xl:columns-3;
+  @apply space-y-6 py-8 md:columns-2 sm:columns-1 sm:gap-6 xl:columns-3;
 }
 
 /* Feed Component */
@@ -153,7 +153,7 @@
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-[240px] ;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white bg-clip-padding p-6 pb-4 backdrop-filter md:w-[360px] w-full h-[240px] ;
 }
 
 .flex-center {

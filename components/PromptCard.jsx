@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
+
   const { data: session } = useSession();
   const pathName = usePathname();
   const router = useRouter();
@@ -69,7 +70,8 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
       </div>
 
       <div
-        className={`font-inter text-sm blue_gradient cursor-pointer dark:text-orange-600 ${pathName !== '/profile' && 'border-t border-orange-600 pt-3'}`}
+        className={`font-inter text-sm blue_gradient cursor-pointer dark:text-orange-600 
+        ${pathName !== '/profile' && 'border-t border-orange-600 pt-3'}`}
         onClick={() => handleTagClick && handleTagClick(post.tag)}
       >
         tag: #{post.tag}
